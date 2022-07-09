@@ -1,0 +1,11 @@
+{
+	"name": "g105b/thumbify",
+	"require": {
+		"phpgt/webengine": "dev-master"
+	},
+	"autoload": {
+		"psr-4": {
+			"Thumbify\\": "./class"
+		}
+	}
+}

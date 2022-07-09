@@ -1,0 +1,74 @@
+html, body {
+	height: 100%;
+	margin: 0;
+}
+
+thumbify-shelf {
+	$size-cover: 12rem;
+	display: block;
+	overflow-x: scroll;
+	scroll-snap-type: x;
+
+	>ol {
+		position: relative;
+		list-style-type: none;
+		padding: 4rem 0;
+		margin: 0;
+		white-space: nowrap;
+		perspective-origin: center;
+		display: flex;
+		justify-content: stretch;
+
+		&::before, &::after {
+			content: "";
+			display: block;
+			flex-basis: $size-cover / 2;
+			min-width: $size-cover / 2;
+			height: $size-cover;
+			background: blue;
+		}
+
+		>li {
+			scroll-snap-align: center;
+			position: relative;
+			display: block;
+			flex-grow: 1;
+			perspective: 22rem;
+
+			.album-sleeve {
+				display: block;
+				width: $size-cover;
+				height: $size-cover;
+				transform-style: preserve-3d;
+				transform: rotateY(0deg);
+				animation: spin 8s infinite alternate ease-in-out;
+
+				@keyframes spin {
+					to {
+						transform: rotateY(-360deg);
+					}
+				}
+
+				.artwork {
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: $size-cover;
+					height: $size-cover;
+					display: block;
+					background-color: rgba(red, 0.5);
+					backface-visibility: hidden;
+
+					&.front {
+						transform: rotateY(0);
+					}
+
+					&.back {
+						transform: rotateY(180deg);
+						background-color: rgba(blue, 0.5);
+					}
+				}
+			}
+		}
+	}
+}
